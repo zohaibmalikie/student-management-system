@@ -1,0 +1,34 @@
+<div class="container-fluid" id="container-fluid">
+    <div class="container-fluid" id="container-fluid">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="padding-left:20px;">Student Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">In</th>
+                    <th scope="col">Out</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each allAttendance}}
+                <tr>
+                    <td style="padding-left:20px;">{{user}}</td>
+                    <td style="padding-left:20px;">{{date}}</td>
+                    <td style="padding-left:20px;">{{time}}</td>
+                    <td style="padding-left:20px;">{{outTime}}</td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="#" role="button" class="float" id="inPlus" onclick="addAttendance(1);">
+        <i class="fa fa-plus my-float"></i>
+    </a>
+
+
+    <a href="#" role="button" class="float-search" onclick="addAttendance(2);">
+        <i class="fa fa-sign-out my-float"></i>
+    </a>
+    <script src="../../public/js/custom.js"></script>

@@ -1,0 +1,37 @@
+<div class="container-fluid" id="container-fluid">
+    <div class="container-fluid" id="container-fluid">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="padding-left:20px;">Book Code</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Smester</th>
+                    <th scope="col">Credits</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each marks}}
+                <tr>
+                    <td style="padding-left:20px;">{{bCode}}</td>
+                    <td style="padding-left:20px;">{{bName}}</td>
+                    <td style="padding-left:20px;">{{smes}}</td>
+                    <td style="padding-left:20px;">{{credits}}</td>
+                    <td style="padding-left:20px;">{{grade}}</td>
+                    <td style="padding-left:20px;">{{points}}</td>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="#" role="button" class="float" id="inPlus" onclick="addAttendance(1);">
+        <i class="fa fa-plus my-float"></i>
+    </a>
+
+
+    <a href="#" role="button" class="float-search" onclick="addAttendance(2);">
+        <i class="fa fa-sign-out my-float"></i>
+    </a>

@@ -1,0 +1,136 @@
+<div class="container-fluid">
+    <div id="fee-mgmt">
+        <div class="container-fluid">
+            {{!-- <div class="card" style="margin-top:50px;">
+                <div class="card-body"> --}}
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="padding-left:20px;">Roll No</th>
+                        <th scope="col" style="padding-left:20px;">Name</th>
+                        <th scope="col">Smester</th>
+                        <th scope="col">Section</th>
+                        <th scope="col">department</th>
+                        <th scope="col">course</th>
+                        <th scope="col">Paid Amount</th>
+                        <th scope="col">Due Amount</th>
+                        <th scope="col">Due Date</th>
+                        <th scope="col">Late Submission Fine</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each feesArr}}
+                    <tr>
+                        <td style="padding-left:20px;">{{studentRoll}}</td>
+                        <td style="padding-left:20px;">{{studentName}}</td>
+                        <td style="padding-left:20px;">{{class}}</td>
+                        <td style="padding-left:20px;">{{section}}</td>
+                        <td style="padding-left:20px;">{{department}}</td>
+                        <td style="padding-left:20px;">{{course}}</td>
+                        <td style="padding-left:20px;">{{amountPaid}}</td>
+                        <td style="padding-left:20px;">{{amountDue}}</td>
+                        <td style="padding-left:20px;">{{dueDate}}</td>
+                        <td style="padding-left:20px;">{{lateSubmissionFine}}</td>
+
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row" id="card-menu">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <img src="/img/logos/icons/plus.png" alt="">
+                                <p class="card-title mt-1">Add Fee</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <img src="/img/logos/icons/money.png" alt="">
+                            <p class="card-title mt-1">Pay Fee</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <img src="/img/logos/icons/money.png" alt="">
+                            <p class="card-title mt-1">Fee Details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-sm-4">
+                    <a href="#">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <img src="/img/logos/icons/receipt.png" alt="">
+                                <p class="card-title mt-1">Fee Receipt</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <img src="/img/logos/icons/clock.png" alt="">
+                            <p class="card-title mt-1">Pending Fee List</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <img src="/img/logos/icons/to-do-list.png" alt="">
+                            <p class="card-title mt-1">Paid Fee List</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8">
+
+        </div>
+    </div>
+</div>
+
+<a href="/fee-management/pay" class="float">
+    <i class="fa fa-plus my-float"></i>
+</a>
+
+<script>
+    function getCourses(dept) {
+
+        const URL = `http://localhost:3000/courses/getCourse/${dept}`;
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let response = JSON.parse(xhttp.responseText);
+                console.log(response);
+                var output = '';
+
+                for (let i = 0; i < response.length; i++) {
+                    output += `<option value="${response[i].courseName}">${response[i].courseName}</option>`;
+                }
+                document.getElementById('courses').innerHTML = output;
+            }
+        };
+
+        xhttp.open("GET", URL, true);
+        xhttp.send();
+    }
+</script>
